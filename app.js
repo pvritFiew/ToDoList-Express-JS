@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const events = require('./routes/events')
 
 mongoose.Promise = global.Promise;
 
@@ -17,18 +18,6 @@ const { error } = require('console');
 
 var app = express();
 
-const AdminBro = require('admin-bro');
-const expressAdminBro = require('@admin-bro/express');
-const mongooseAdminBro = require('@admin-bro/mongoose');
-
-const event = require('./model/Event')
-
-AdminBro.registerAdapter(mongooseAdminBro)
-const AdminBroOption = {resource: {event}}
-
-const adminBro = new AdminBro(AdminBroOption)
-const router = expressAdminBro.buildRouter(adminBro)
-app.use(adminBro.options.rootPath, router)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/events', events);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
