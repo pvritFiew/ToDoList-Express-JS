@@ -30,6 +30,8 @@ Defualt URL - http://localhost:3000
 ## วิธีใช้งาน
 - ติดตั้ง node.js ด้วยคำสั่งใน terminal
  - $ npm install
+- จากนั้นใช้คำสั่งเพื่อรันโปรแกรม
+ - $ npm start
 - เข้าสู่หน้า Endpoint ได้จากบราวเซอร์ต่างๆดัง URL ด้านบน
 
 ### format data
